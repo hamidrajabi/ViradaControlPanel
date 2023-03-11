@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل کاربری</title>
+    <link rel="stylesheet" href="../dist/output.css">
+
+</head>
+<body>
+    <main class="container mx-auto">
+        <section class="grid grid-cols-1 gap-8 mx-auto justify-between w-full max-w-xs sm:max-w-none sm:grid-cols-2 lg:grid-cols-3">
+            <form data-form="1">
+            <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
+                <h3 class="text-3xl flex items-center gap-4">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                    هیتر
+                </h3>
+
+                <div dir="rtl" class="flex w-full justify-between">
+                    تنظیم بر اساس:
+                    <div class="flex">
+                        <div class="mr-2">
+                            <label for="time-1">زمان</label>
+                            <input data-input-id="1" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="time-1">
+                        </div>
+                        <div class="mr-4">
+                            <label for="temperature-1">دما</label>
+                            <input data-input-id="1" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="temperature-1">
+                        </div>
+                    </div>
+                </div>
+                <div dir="rtl" data-input="time-1" class="hidden setting-time flex flex-col gap-4 w-full">
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-on-1">زمان روشن شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-on-1" id="turn-on-1">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-off-1">زمان خاموش شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-off-1" id="turn-off-1">
+                    </div>
+                </div>
+                <div dir="rtl" data-input="temperature-1" class="hidden setting-temperature flex flex-col gap-4 w-full">
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-on-temperature-1">دمای روشن شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-on-temperature-1" id="turn-on-temperature-1">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-off-temperature-1">دمای خاموش شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-off-temperature-1" id="turn-off-temperature-1">
+                    </div>
+                </div>
+                <button type="button" class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
+            </section>
+            </form>
+            <form data-form="2">
+            <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
+                <h3 class="text-3xl flex items-center gap-4">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                    هیتر
+                </h3>
+                <div dir="rtl" class="flex w-full justify-between">
+                    تنظیم بر اساس: 
+                    <div class="flex">
+                        <div class="mr-2">
+                            <label for="time-2">زمان</label>
+                            <input data-input-id="2" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="time-2">
+                        </div>
+                        <div class="mr-4">
+                            <label for="temperature-2">دما</label>
+                            <input data-input-id="2" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="temperature-2">
+                        </div>
+                    </div>
+                </div>
+                <div dir="rtl" data-input="time-2" class="hidden setting-time flex flex-col gap-4 w-full">
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-on-2">زمان روشن شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-on-2" id="turn-on-2">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-off-2">زمان خاموش شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-off-2" id="turn-off-2">
+                    </div>
+                </div>
+                <div dir="rtl" data-input="temperature-2" class="hidden setting-temperature flex flex-col gap-4 w-full">
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-on-temperature-2">دمای روشن شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-on-temperature-2" id="turn-on-temperature-2">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-off-temperature-2">دمای خاموش شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-off-temperature-2" id="turn-off-temperature-2">
+                    </div>
+                </div>
+                <button type="button" class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
+            </section>
+            </form>
+            <form data-form="3">
+            <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
+                <h3 class="text-3xl flex items-center gap-4">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                    هیتر
+                </h3>                
+                
+                <div dir="rtl" class="flex w-full justify-between">
+                    تنظیم بر اساس: 
+                    <div class="flex">
+                        <div class="mr-2">
+                            <label for="time-3">زمان</label>
+                            <input data-input-id="3" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="time-3">
+                        </div>
+                        <div class="mr-4">
+                            <label for="temperature-3">دما</label>
+                            <input data-input-id="3" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="temperature-3">
+                        </div>
+                    </div>
+                </div>
+                <div dir="rtl" data-input="time-3" class="hidden setting-time flex flex-col gap-4 w-full">
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-on-3">زمان روشن شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-on-3" id="turn-on-3">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-off-3">زمان خاموش شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-off-3" id="turn-off-3">
+                    </div>
+                </div>
+                <div dir="rtl" data-input="temperature-3" class="hidden setting-temperature flex flex-col gap-4 w-full">
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-on-temperature-3">دمای روشن شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-on-temperature-3" id="turn-on-temperature-3">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="turn-off-temperature-3">دمای خاموش شدن</label>
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-off-temperature-3" id="turn-off-temperature-3">
+                    </div>
+                </div>
+                <button type="button" class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
+            </section>
+            </form>
+        </section>
+    </main>
+      
+    <script src="../asset/js/app.js"></script>
+</body>
+</html>
