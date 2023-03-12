@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'vazir';
+    src: 
+      url("../asset/vazir-font/Vazir.woff") format("woff"),
+      url("../asset/vazir-font/Vazir.woff2") format("woff2"),
+      url("../asset/vazir-font/Vazir.ttf") format("ttf"),
+      url("../asset/vazir-font/Vazir.eot") format("eot");
+}
+
+*{
+    font-family: 'vazir';
+}
+
+.radio {
+    flex-shrink: 0;
+    --chkbg: var(--bc);
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 9999px;
+    border-width: 1px;
+    border-color: hsl(var(--bc)/var(--tw-border-opacity));
+    --tw-border-opacity: .2;
+    transition: background,box-shadow var(--animation-input,.2s) ease-in-out;
+}
