@@ -1,0 +1,571 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Virada Factory</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+
+
+<style>
+  .wrapper {
+  background-color: #2d4e5a;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+.wrapper2 {
+  background-color: #2d4e5a;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+.wrapper3{
+  background-color: #2d4e5a;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+.wrapper4 {
+  background-color: #2d4e5a;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+.pushable {
+  background: hsl(340deg 100% 32%);
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 70px;
+}
+
+.front {
+  display: block;
+  padding: 12px 42px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  background: hsl(345deg 100% 47%);
+  color: white;
+  transform: translateY(-4px);
+  height: 70px;
+}
+
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.front {
+    will-change: transform;
+    transition: transform 250ms;
+  }
+
+  .pushable:hover .front {
+    transform: translateY(-6px);
+  }
+  
+  .pushable:active .front {
+    transform: translateY(-2px);
+  }
+
+.switch
+{
+  position: relative;
+  width: 50%;
+  height: 50px;
+  -webkit-appearance: none;
+  background: linear-gradient(0deg,#333,#000);
+  outline: none;
+  border-radius: 20px;
+  box-shadow: 0 0 0 4px #353535, 0 0 0 5px #3e3e3e,
+  inset 0 0 10px rgba(0,0,0,1),0 5px 20px rgba(0,0,0,.5), inset 0 0 15px rgba(0,0,0,.2);
+}
+
+.switch
+{
+  background: linear-gradient(0deg,#6dd1ff,#20b7ff);
+  box-shadow: 0 0 2px #6dd1ff, 0 0 0 4px #353535, 0 0 0 5px #3e3e3e,
+  inset 0 0 10px rgba(0,0,0,1),0 5px 20px rgba(0,0,0,.5), inset 0 0 15px rgba(0,0,0,.2);
+}
+
+.switch:before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(0deg,#000,#6b6b6b);
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #232323;
+  transform: scale(.98, .96);
+  transition: .5s;
+}
+
+.switch:checked[type="checkbox"]:before 
+{
+  left: 40px;
+}
+
+.switch:after{
+  content: '';
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 65px;
+  width: 4px;
+  height:  4px;
+  background: linear-gradient(0deg,#6b6b6b,#000);
+  border-radius: 50%;
+  transition: .5s;
+}
+
+.switch:checked[type="checkbox"]:after 
+{
+  background: #63cdff;
+  left: 105px;
+  box-shadow: 0 0 5px #13b3ff, 0 0 15px #13b3ff;
+}
+
+#color-wheel {
+    width: 150px;
+    height: 150px;
+    padding: 50%;
+    background: radial-gradient(white, transparent 80%),
+                conic-gradient(#e43f00, #fae410, #55cc3b, #09adff, #6b0efd, #e70d86, #e43f00);
+    border-radius: 50%;
+}
+
+.styled-button {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(0, 220, 220, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled-button:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.styled-button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Virada Factory!</h1>
+
+  
+  <div class="row" style="padding:10px">
+    <div class="col-sm-3" style="background-color:lavender;">    
+      <div class="row" style="margin-left:40% ;">
+      <label for="Heater" style="font-size: 150%;">تانکر 1</label>
+      <br>
+      <br>
+      <!-- <input class="switch" type="checkbox" name="Heater" id="Heater"> -->
+      </div>
+      <div class="row">
+        <div class="col-sm-12" style="background-color:lavender;"> 
+            <div id="wrapper" class="wrapper">              
+            </div>
+        </div>
+      </div>
+    </div>    
+
+    <div class="col-sm-3" style="background-color:lavender;">    
+      <div class="row" style="margin-left:40% ;">
+      <label for="Heater" style="font-size: 150%;">Sensor 2</label>
+      <br>
+      <br>
+      <!-- <input class="switch" type="checkbox" name="Heater" id="Heater"> -->
+      </div>
+      <div class="row">
+        <div class="col-sm-12" style="background-color:lavender;"> 
+          <div>
+            <div id="wrapper2" class="wrapper2"></div>
+          </div>
+        </div>  
+      </div>
+    </div>
+
+    <div class="col-sm-3" style="background-color:lavender;">    
+      <div class="row" style="margin-left:40% ;">
+      <label for="Heater" style="font-size: 150%;">Sensor 3</label>
+      <br>
+      <br>
+      <!-- <input class="switch" type="checkbox" name="Heater" id="Heater"> -->
+      </div>
+      <div class="row">
+        <div class="col-sm-12" style="background-color:lavender;"> 
+            <div id="wrapper3" class="wrapper3"></div>
+        </div>  
+      </div>
+    </div>
+
+    <div class="col-sm-3" style="background-color:lavender;">    
+      <div class="row" style="margin-left:40% ;">
+      <label for="Heater" style="font-size: 150%;">Sensor 4</label>
+      <br>
+      <br>
+      <!-- <input class="switch" type="checkbox" name="Heater" id="Heater"> -->
+      </div>
+      <div class="row">
+        <div class="col-sm-12" style="background-color:lavender;"> 
+            <div id="wrapper4" class="wrapper4"></div>
+          </div>
+        </div>  
+      </div>      
+  </div>
+
+  <div class="row" style="padding:10px">
+
+    <div class="col-sm-4 col-sm-offset-4" style="background-color:lavender;">    
+      <div class="row" style="margin-left:40% ;">
+      <label for="Heater" style="font-size: 150%;">ترموکوپل</label>
+      <br>
+      <br>
+      <!-- <input class="switch" type="checkbox" name="Heater" id="Heater"> -->
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12" style="background-color:lavender;"> 
+          <div>
+            <div id="tempGaugeContainer" style="height: 300px;">
+            </div>
+                <p id="temp_time" style="font-size: 150%;">0</p> 
+          </div>
+        </div>  
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row" style="padding:10px">
+    <div class="col-sm-4" style="background-color:lavender;">    
+      <div class="row" style="margin-left:40% ;">
+      <label for="Heater" style="font-size: 150%;">Heater</label>
+      <br>
+      <br>
+      <input class="switch" type="checkbox" name="Heater" id="0">
+      </div>
+      
+      <div class="row">
+          
+    <form method="post" class="outlet-form" id ="outlet-form">
+    <!-- {% csrf_token %} -->
+    <input type="hidden" name="outlet-id" value="0">
+      <div class="col-sm-4" style="background-color:lavender;"> 
+      <div>
+        <label for="light-on-time">Time Based</label>
+        <input type="checkbox" name="parameter" id="light-on-time">
+      </div>
+      <div>
+        <label for="light-on-time">Turn On time</label>
+        <input type="time" name="on-value" id="on-value" >
+      </div>
+      <div>
+        <label for="light-on-time">Turn Off time</label>
+        <input type="time" name="off-value" id="off-value" >
+      </div>
+      </div>
+
+      <div class="col-sm-4" style="background-color:lavender;">    
+        <div>
+          <label for="light-on-time">Temp </label>
+          <input type="checkbox" id="light-on-time">
+        </div>
+        <div>
+          <label for="light-on-time">Turn On temp</label>
+          <input type="number" name="temp-on-value" id="temp-on-value">
+        </div>
+        <div>
+          <label for="light-on-time">Turn Off temp</label>
+          <input type="number" name="temp-off-value" id="temp-off-value">
+        </div> 
+        <input class="styled-button" type="submit" value="Submit">      
+      </div>
+        
+    </form>
+
+      </div>
+
+
+    </div>
+    <div class="col-sm-4" style="background-color:lavenderblush;">
+      <div style="margin-left:40% ;">
+        <label for="Filter" style="font-size: 150%;">Filter</label>
+        <br>
+        <br>
+        <input class="switch" type="checkbox" name="Filter"  id="1" onclick="toggleLight()">
+        </div>
+
+        <form>
+        <div>
+          <label for="light-on-time">Time Based</label>
+          <input type="checkbox" id="light-on-time">
+        </div>
+  
+        <div>
+          <label for="light-on-time">Turn On time</label>
+          <input type="time" id="light-on-time">
+        </div>
+        <div>
+          <label for="light-on-time">Turn Off time</label>
+          <input type="time" id="light-of-time">
+        </div>
+        <input class="styled-button" type="submit" value="submit">
+        </form>
+    </div>
+    <div class="col-sm-4" style="background-color:lavender;">
+      <div style="margin-left:40% ;">
+        <label for="Switch" style="font-size: 150%;">Switch</label>
+        <br>
+        <br>
+        <input class="switch" type="checkbox" name="Switch"  id="Switch" onclick="toggleLight()">
+        </div>
+
+        <form>
+        <div>
+          <label for="light-on-time">Time Based</label>
+          <input type="checkbox" id="light-on-time">
+        </div>
+  
+        <div>
+          <label for="light-on-time">Turn On time</label>
+          <input type="time" id="light-on-time">
+        </div>
+        <div>
+          <label for="light-on-time">Turn Off time</label>
+          <input type="time" id="light-of-time">
+        </div>
+        <input class="styled-button" type="submit" value="submit">
+        </form>
+
+    </div>
+  </div>
+  
+<!--  <div class="row " style="padding:10px">-->
+<!--    <div class="col-sm-4 col-sm-offset-4" style="background-color:rgb(240, 240, 240);">-->
+<!--    <button class="pushable">-->
+<!--  <span class="front">-->
+<!--    Feeder-->
+<!--  </span>-->
+<!--</button>-->
+
+<!--<form>-->
+<!--<div>-->
+<!--  <label for="light-on-time">Time Based</label>-->
+<!--  <input type="checkbox" id="light-on-time">-->
+<!--</div>-->
+
+<!--<div>-->
+<!--  <label for="light-on-time">Turn On time</label>-->
+<!--  <input type="time" id="light-on-time">-->
+<!--</div>-->
+<!--<div>-->
+<!--  <label for="light-on-time">Turn Off time</label>-->
+<!--  <input type="time" id="light-of-time">-->
+<!--</div>-->
+<!--<input class="styled-button" type="submit" value="Submit">-->
+
+<!--</form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  </div>-->
+
+</body>
+
+<script>
+Highcharts.chart('tempGaugeContainer', {
+  chart: {
+    type: 'solidgauge',
+    marginTop: 10
+  },
+  
+  credits: {
+    enabled: false
+},
+
+  title: {
+    text: 'Temperature'
+  },
+
+  subtitle: {
+   
+    text: "&#176",
+    style: {
+      'font-size': '60px'
+    },
+    y: 200,
+    zIndex: 7
+  },
+
+  tooltip: {
+    enabled: false
+  },
+
+  pane: [{
+    startAngle: -120,
+    endAngle: 120,
+    background: [{ // Track for Move
+      outerRadius: '100%',
+      innerRadius: '80%',
+      backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.3).get(),
+      borderWidth: 0,
+      shape: 'arc'
+    }],
+    size: '120%',
+    center: ['50%', '65%']
+  }, {
+    startAngle: -120,
+    endAngle: 120,
+    size: '95%',
+    center: ['50%', '65%'],
+    background: []
+  }],
+
+  yAxis: [{
+    min: 0,
+    max: 60,
+    lineWidth: 2,
+    lineColor: 'white',
+    tickInterval: 10,
+    labels: {
+      enabled: false
+    },
+    minorTickWidth: 0,
+    tickLength: 50,
+    tickWidth: 5,
+    tickColor: 'white',
+    zIndex: 6,
+    stops: [
+      [0, '#fff'],
+      [0.101, '#0f0'],
+      [0.201, '#2d0'],
+      [0.301, '#4b0'],
+      [0.401, '#690'],
+      [0.501, '#870'],
+      [0.601, '#a50'],
+      [0.701, '#c30'],
+      [0.801, '#e10'],
+      [0.901, '#f03'],
+      [1, '#f06']
+    ]
+  }, {
+    linkedTo: 0,
+    pane: 1,
+    lineWidth: 5,
+    lineColor: 'white',
+    tickPositions: [],
+    zIndex: 6
+  }],
+  
+  series: [{
+    animation: true,
+    dataLabels: {
+        enabled:false,
+    //   format: "true"
+    },
+    borderWidth: 0,
+    color: Highcharts.getOptions().colors[0],
+    radius: '100%',
+    innerRadius: '80%',
+    data: [20]
+  }]
+});
+</script>
+
+<script>
+const colors = [
+    {r: 0xe4, g: 0x3f, b: 0x00},
+    {r: 0xfa, g: 0xe4, b: 0x10},
+    {r: 0x55, g: 0xcc, b: 0x3b},
+    {r: 0x09, g: 0xad, b: 0xff},
+    {r: 0x6b, g: 0x0e, b: 0xfd},
+    {r: 0xe7, g: 0x0d, b: 0x86},
+    {r: 0xe4, g: 0x3f, b: 0x00}
+];
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('color-wheel').addEventListener('mousemove', function(e) {
+        var rect = e.target.getBoundingClientRect();
+        //Compute cartesian coordinates as if the circle radius was 1
+        var x = 2 * (e.clientX - rect.left) / (rect.right - rect.left) - 1;
+        var y = 1 - 2 * (e.clientY - rect.top) / (rect.bottom - rect.top);
+        //Compute the angle in degrees with 0 at the top and turning clockwise as expected by css conic gradient
+        var a = ((Math.PI / 2 - Math.atan2(y, x)) / Math.PI * 180);
+        if (a < 0) a += 360;
+        //Map the angle between 0 and number of colors in the gradient minus one
+        a = a / 360 * (colors.length - 1);  //minus one because the last item is at 360째 which is the same as 0째
+        //Compute the colors to interpolate
+        var a0 = Math.floor(a) % colors.length;
+        var a1 = (a0 + 1) % colors.length;
+        var c0 = colors[a0];
+        var c1 = colors[a1];
+        //Compute the weights and interpolate colors
+        var a1w = a - Math.floor(a);
+        var a0w = 1 - a1w;
+        var color = {
+            r: c0.r * a0w + c1.r * a1w,
+            g: c0.g * a0w + c1.g * a1w,
+            b: c0.b * a0w + c1.b * a1w
+        };
+        //Compute the radius
+        var r = Math.sqrt(x * x + y * y);
+        if (r > 1) r = 1;
+        //Compute the white weight, interpolate, and round to integer
+        var cw = r < 0.8 ? (r / 0.8) : 1;
+        var ww = 1 - cw;
+        color.r = Math.round(color.r * cw + 255 * ww);
+        color.g = Math.round(color.g * cw + 255 * ww);
+        color.b = Math.round(color.b * cw + 255 * ww);
+        //Compute the hex color code and apply it
+        var xColor = rgbToHex(color.r, color.g, color.b);
+        document.getElementById('color').innerText = "your color";
+        document.getElementById('color').style.backgroundColor = xColor;
+    });
+});
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+</script>
+
+<script type="text/javascript" src="{%static 'js/tank.js'%}"></script>
+<script type="text/javascript" src="{%static 'js/haery.js'%}"></script>
+
+
+
+</html>

@@ -1,206 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>پنل کاربری</title>
     <link rel="stylesheet" href="../dist/output.css">
+    <link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet" />
+
+    <style>
+        #handle1 .rs-handle {
+            background-color: transparent;
+            border: 8px solid transparent;
+            border-right-color: black;
+            margin: -6px 0px 0px 14px !important;
+            border-width: 6px 104px 6px 4px;
+        }
+
+        #handle1 .rs-handle:before {
+            display: block;
+            content: " ";
+            position: absolute;
+            height: 22px;
+            width: 22px;
+            background: black;
+            right: -11px;
+            bottom: -11px;
+            border-radius: 100px;
+        }
+
+        #handle1 .rs-tooltip {
+            top: 75%;
+            /* font-size: 14px; */
+        }
+
+        #handle1 .rs-tooltip div {
+            background: orange;
+            color: white;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 1.5rem;
+            padding: .2rem .5rem;
+            
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        #handle1 .rs-tooltip div div {
+            display: none;
+        }
+
+        #handle1 .rs-range-color {
+            background-color: #DB5959;
+        }
+
+        #handle1 .rs-path-color {
+            background-color: #F0C5C5;
+        }
+    </style>
 
 </head>
+
 <body>
     <main class="container mx-auto">
-        <section class="mb-12 grid grid-cols-1 gap-8 mx-auto justify-between w-full max-w-xs sm:max-w-none md:grid-cols-2 md:grid-rows-2">
-            <div class="flex flex-col justify-between items-center">
+        <h1 class="text-3xl text-right mb-8 mt-8">تانکر ها</h1>
+        <section
+            class="mb-12 grid grid-cols-1 gap-8 mx-auto justify-between w-full max-w-xs sm:max-w-none md:grid-cols-2 md:grid-rows-2">
+            <div class="flex flex-col justify-between items-center shadow-lg p-2 pr-6 sm:pr-2 rounded-lg">
                 <div class="flex">
-                    <img class="w-1/2" src="../asset/image/pngwing.com.png" alt="tanker-1">
-                    <div class="flex flex-col self-end gap-4 mb-6">
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
+                    <img class="w-1/2 sm:w-1/3 md:w-1/2 lg:w-1/3 mr-2" src="../asset/image/tanker.png" alt="tanker-1">
+                    <div class="flex flex-col self-center gap-4 mt-4">
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 cm</span> : ارتفاع آب</span>
+                        </div>
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 Lit</span> : حجم آب</span>
+                        </div>
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 cm</span> : سرعت پر شدن</span>
+                        </div>
+                        <div class="w-[150px] h-[20px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm">1401-12-21 12:37:01</span>
+                        </div>
                     </div>
                 </div>
-                <span>1401-12-21</span>
+                <!-- <span class="ml-4 sm:ml-8 md:ml-6">1401-12-21 12:37:01</span> -->
+                <form class="flex flex-row-reverse items-end gap-8 mt-4 self-start ">
+                    <div dir="rtl" class="flex flex-col gap-2">
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                            name="set-volume-1" id="set-volume-1" placeholder="تعیین حجم آب">
+                    </div>
+                    <button type="submit" class="w-fit px-4 py-2 h-[35px] rounded-lg bg-yellow-400">تایید</button>
+                </form>
             </div>
 
-            <div class="flex flex-col justify-between items-center">
+            <div class="flex flex-col justify-between items-center shadow-lg p-2 pr-6 sm:pr-2 rounded-lg">
                 <div class="flex">
-                    <img class="w-1/2" src="../asset/image/pngwing.com.png" alt="tanker-2">
-                    <div class="flex flex-col self-end gap-4 mb-6">
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
+                    <img class="w-1/2 sm:w-1/3 md:w-1/2 lg:w-1/3 mr-2" src="../asset/image/tanker.png" alt="tanker-2">
+                    <div class="flex flex-col self-center gap-4 mt-4">
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 cm</span> : ارتفاع آب</span>
+                        </div>
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 Lit</span> : حجم آب</span>
+                        </div>
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 cm</span> : سرعت پر شدن</span>
+                        </div>
+                        <div class="w-[150px] h-[20px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm">1401-12-21 12:37:01</span>
+                        </div>
                     </div>
                 </div>
-                <span>1401-12-21</span>
+                <!-- <span class="ml-4 sm:ml-8 md:ml-6">1401-12-21 12:37:01</span> -->
+                <form class="flex flex-row-reverse items-end gap-8 mt-4 self-start ">
+                    <div dir="rtl" class="flex flex-col gap-2">
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                            name="set-volume-2" id="set-volume-2" placeholder="تعیین حجم آب">
+                    </div>
+                    <button type="submit" class="w-fit px-4 py-2 h-[35px] rounded-lg bg-yellow-400">تایید</button>
+                </form>
             </div>
 
-            <div class="flex flex-col justify-between items-center">
+            <div class="flex flex-col justify-between items-center shadow-lg p-2 pr-6 sm:pr-2 rounded-lg">
                 <div class="flex">
-                    <img class="w-1/2" src="../asset/image/pngwing.com.png" alt="tanker-3">
-                    <div class="flex flex-col self-end gap-4 mb-6">
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
+                    <img class="w-1/2 sm:w-1/3 md:w-1/2 lg:w-1/3 mr-2" src="../asset/image/tanker.png" alt="tanker-3">
+                    <div class="flex flex-col self-center gap-4 mt-4">
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 cm</span> : ارتفاع آب</span>
+                        </div>
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 Lit</span> : حجم آب</span>
+                        </div>
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 cm</span> : سرعت پر شدن</span>
+                        </div>
+                        <div class="w-[150px] h-[20px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm">1401-12-21 12:37:01</span>
+                        </div>
                     </div>
                 </div>
-                <span>1401-12-21</span>
+                <!-- <span class="ml-4 sm:ml-8 md:ml-6">1401-12-21 12:37:01</span> -->
+                <form class="flex flex-row-reverse items-end gap-8 mt-4 self-start ">
+                    <div dir="rtl" class="flex flex-col gap-2">
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                            name="set-volume-3" id="set-volume-3" placeholder="تعیین حجم آب">
+                    </div>
+                    <button type="submit" class="w-fit px-4 py-2 h-[35px] rounded-lg bg-yellow-400">تایید</button>
+                </form>
             </div>
 
-            <div class="flex flex-col justify-between items-center">
+            <div class="flex flex-col justify-between items-center shadow-lg p-2 pr-6 sm:pr-2 rounded-lg">
                 <div class="flex">
-                    <img class="w-1/2" src="../asset/image/pngwing.com.png" alt="tanker-3">
-                    <div class="flex flex-col self-end gap-4 mb-6">
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
-                        <div class="w-[150px] h-[50px] skew-x-[-20deg] border-t-2 border-l-4 border-red-400 "></div>
+                    <img class="w-1/2 sm:w-1/3 md:w-1/2 lg:w-1/3 mr-2" src="../asset/image/tanker.png" alt="tanker-3">
+                    <div class="flex flex-col self-center gap-4 mt-4">
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 cm</span> : ارتفاع آب</span>
+                        </div>
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 Lit</span> : حجم آب</span>
+                        </div>
+                        <div class="w-[150px] h-[30px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm"><span>450 cm</span> : سرعت پر شدن</span>
+                        </div>
+                        <div class="w-[150px] h-[20px] skew-x-[-20deg] border-t-2 border-l-4 border-blue-400 relative">
+                            <span class="absolute -top-6 text-sm">1401-12-21 12:37:01</span>
+                        </div>
                     </div>
                 </div>
-                <span>1401-12-21</span>
+                <!-- <span class="ml-start sm:ml-8 md:ml-6">1401-12-21 12:37:01</span> -->
+                <form class="flex flex-row-reverse items-end gap-8 mt-4 self-start ">
+                    <div dir="rtl" class="flex flex-col gap-2">
+                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                            name="set-volume-4" id="set-volume-4" placeholder="تعیین حجم آب">
+                    </div>
+                    <button type="submit" class="w-fit px-4 py-2 h-[35px] rounded-lg bg-yellow-400">تایید</button>
+                </form>
             </div>
-
         </section>
-        <section class="grid grid-cols-1 gap-8 mx-auto justify-between w-full max-w-xs sm:max-w-none sm:grid-cols-2 lg:grid-cols-3">
+        <h1 class="text-3xl text-right mb-8 mt-20">ترموکوپل</h1>
+        <section class="flex justify-center">
+            <div id="handle1"></div>
+        </section>
+        <h1 class="text-3xl text-right mb-8 mt-20">فیلتر ها و هیتر ها</h1>
+        <section
+            class="grid grid-cols-1 gap-8 mx-auto justify-between w-full max-w-xs sm:max-w-none sm:grid-cols-2 lg:grid-cols-3 mb-4">
             <form data-form="1">
-            <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
-                <h3 class="text-3xl flex items-center gap-4">
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer">
-                        <div class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                    </label>
-                    هیتر
-                </h3>
+                <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
+                    <h3 class="text-3xl flex items-center gap-4">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div
+                                class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                            </div>
+                        </label>
+                        هیتر
+                    </h3>
 
-                <div dir="rtl" class="flex w-full justify-between">
-                    تنظیم بر اساس:
-                    <div class="flex">
-                        <div class="mr-2">
-                            <label for="time-1">زمان</label>
-                            <input data-input-id="1" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="time-1">
+                    <div dir="rtl" class="flex w-full justify-between">
+                        تنظیم بر اساس:
+                        <div class="flex">
+                            <div class="mr-2">
+                                <label for="time-1">زمان</label>
+                                <input data-input-id="1" class="radio-input w-4 h-4 align-middle" type="radio"
+                                    name="setting" id="time-1">
+                            </div>
+                            <div class="mr-4">
+                                <label for="temperature-1">دما</label>
+                                <input data-input-id="1" class="radio-input w-4 h-4 align-middle" type="radio"
+                                    name="setting" id="temperature-1">
+                            </div>
                         </div>
-                        <div class="mr-4">
-                            <label for="temperature-1">دما</label>
-                            <input data-input-id="1" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="temperature-1">
+                    </div>
+                    <div dir="rtl" data-input="time-1" class="hidden setting-time flex flex-col gap-4 w-full">
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-on-1">زمان روشن شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time"
+                                name="turn-on-1" id="turn-on-1">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-off-1">زمان خاموش شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time"
+                                name="turn-off-1" id="turn-off-1">
                         </div>
                     </div>
-                </div>
-                <div dir="rtl" data-input="time-1" class="hidden setting-time flex flex-col gap-4 w-full">
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-on-1">زمان روشن شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-on-1" id="turn-on-1">
+                    <div dir="rtl" data-input="temperature-1"
+                        class="hidden setting-temperature flex flex-col gap-4 w-full">
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-on-temperature-1">دمای روشن شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                                name="turn-on-temperature-1" id="turn-on-temperature-1">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-off-temperature-1">دمای خاموش شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                                name="turn-off-temperature-1" id="turn-off-temperature-1">
+                        </div>
                     </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-off-1">زمان خاموش شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-off-1" id="turn-off-1">
-                    </div>
-                </div>
-                <div dir="rtl" data-input="temperature-1" class="hidden setting-temperature flex flex-col gap-4 w-full">
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-on-temperature-1">دمای روشن شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-on-temperature-1" id="turn-on-temperature-1">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-off-temperature-1">دمای خاموش شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-off-temperature-1" id="turn-off-temperature-1">
-                    </div>
-                </div>
-                <button data-button-id="1" type="button" class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
-            </section>
+                    <button data-button-id="1" type="button"
+                        class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
+                </section>
             </form>
             <form data-form="2">
-            <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
-                <h3 class="text-3xl flex items-center gap-4">
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer">
-                        <div class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                    </label>
-                    هیتر
-                </h3>
-                <div dir="rtl" class="flex w-full justify-between">
-                    تنظیم بر اساس: 
-                    <div class="flex">
-                        <div class="mr-2">
-                            <label for="time-2">زمان</label>
-                            <input data-input-id="2" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="time-2">
+                <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
+                    <h3 class="text-3xl flex items-center gap-4">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div
+                                class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                            </div>
+                        </label>
+                        هیتر
+                    </h3>
+                    <div dir="rtl" class="flex w-full justify-between">
+                        تنظیم بر اساس:
+                        <div class="flex">
+                            <div class="mr-2">
+                                <label for="time-2">زمان</label>
+                                <input data-input-id="2" class="radio-input w-4 h-4 align-middle" type="radio"
+                                    name="setting" id="time-2">
+                            </div>
+                            <div class="mr-4">
+                                <label for="temperature-2">دما</label>
+                                <input data-input-id="2" class="radio-input w-4 h-4 align-middle" type="radio"
+                                    name="setting" id="temperature-2">
+                            </div>
                         </div>
-                        <div class="mr-4">
-                            <label for="temperature-2">دما</label>
-                            <input data-input-id="2" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="temperature-2">
+                    </div>
+                    <div dir="rtl" data-input="time-2" class="hidden setting-time flex flex-col gap-4 w-full">
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-on-2">زمان روشن شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time"
+                                name="turn-on-2" id="turn-on-2">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-off-2">زمان خاموش شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time"
+                                name="turn-off-2" id="turn-off-2">
                         </div>
                     </div>
-                </div>
-                <div dir="rtl" data-input="time-2" class="hidden setting-time flex flex-col gap-4 w-full">
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-on-2">زمان روشن شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-on-2" id="turn-on-2">
+                    <div dir="rtl" data-input="temperature-2"
+                        class="hidden setting-temperature flex flex-col gap-4 w-full">
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-on-temperature-2">دمای روشن شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                                name="turn-on-temperature-2" id="turn-on-temperature-2">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-off-temperature-2">دمای خاموش شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                                name="turn-off-temperature-2" id="turn-off-temperature-2">
+                        </div>
                     </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-off-2">زمان خاموش شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-off-2" id="turn-off-2">
-                    </div>
-                </div>
-                <div dir="rtl" data-input="temperature-2" class="hidden setting-temperature flex flex-col gap-4 w-full">
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-on-temperature-2">دمای روشن شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-on-temperature-2" id="turn-on-temperature-2">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-off-temperature-2">دمای خاموش شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-off-temperature-2" id="turn-off-temperature-2">
-                    </div>
-                </div>
-                <button data-button-id="2" type="button" class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
-            </section>
+                    <button data-button-id="2" type="button"
+                        class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
+                </section>
             </form>
             <form data-form="3">
-            <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
-                <h3 class="text-3xl flex items-center gap-4">
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer">
-                        <div class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                    </label>
-                    هیتر
-                </h3>                
-                
-                <div dir="rtl" class="flex w-full justify-between">
-                    تنظیم بر اساس: 
-                    <div class="flex">
-                        <div class="mr-2">
-                            <label for="time-3">زمان</label>
-                            <input data-input-id="3" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="time-3">
+                <section class="shadow-lg p-4 rounded-lg gap-6 flex flex-col items-center justify-center text-gray-800">
+                    <h3 class="text-3xl flex items-center gap-4">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div
+                                class="scale-125 w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                            </div>
+                        </label>
+                        هیتر
+                    </h3>
+
+                    <div dir="rtl" class="flex w-full justify-between">
+                        تنظیم بر اساس:
+                        <div class="flex">
+                            <div class="mr-2">
+                                <label for="time-3">زمان</label>
+                                <input data-input-id="3" class="radio-input w-4 h-4 align-middle" type="radio"
+                                    name="setting" id="time-3">
+                            </div>
+                            <div class="mr-4">
+                                <label for="temperature-3">دما</label>
+                                <input data-input-id="3" class="radio-input w-4 h-4 align-middle" type="radio"
+                                    name="setting" id="temperature-3">
+                            </div>
                         </div>
-                        <div class="mr-4">
-                            <label for="temperature-3">دما</label>
-                            <input data-input-id="3" class="radio-input w-4 h-4 align-middle" type="radio" name="setting" id="temperature-3">
+                    </div>
+                    <div dir="rtl" data-input="time-3" class="hidden setting-time flex flex-col gap-4 w-full">
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-on-3">زمان روشن شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time"
+                                name="turn-on-3" id="turn-on-3">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-off-3">زمان خاموش شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time"
+                                name="turn-off-3" id="turn-off-3">
                         </div>
                     </div>
-                </div>
-                <div dir="rtl" data-input="time-3" class="hidden setting-time flex flex-col gap-4 w-full">
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-on-3">زمان روشن شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-on-3" id="turn-on-3">
+                    <div dir="rtl" data-input="temperature-3"
+                        class="hidden setting-temperature flex flex-col gap-4 w-full">
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-on-temperature-3">دمای روشن شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                                name="turn-on-temperature-3" id="turn-on-temperature-3">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="turn-off-temperature-3">دمای خاموش شدن</label>
+                            <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number"
+                                name="turn-off-temperature-3" id="turn-off-temperature-3">
+                        </div>
                     </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-off-3">زمان خاموش شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="time" name="turn-off-3" id="turn-off-3">
-                    </div>
-                </div>
-                <div dir="rtl" data-input="temperature-3" class="hidden setting-temperature flex flex-col gap-4 w-full">
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-on-temperature-3">دمای روشن شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-on-temperature-3" id="turn-on-temperature-3">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="turn-off-temperature-3">دمای خاموش شدن</label>
-                        <input class="rounded-lg h-[35px] p-2 border-0 outline-0 bg-gray-100" type="number" name="turn-off-temperature-3" id="turn-off-temperature-3">
-                    </div>
-                </div>
-                <button data-button-id="3" type="button" class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
-            </section>
+                    <button data-button-id="3" type="button"
+                        class="cursor-not-allowed w-full h-[35px] rounded-lg bg-yellow-400 opacity-50">تایید</button>
+                </section>
             </form>
         </section>
     </main>
-      
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
+
+
+    <script>
+    $("#handle1").roundSlider({
+        sliderType: "min-range",
+        editableTooltip: false,
+        radius: 105,
+        width: 16,
+        value: 43,
+        handleSize: 0,
+        handleShape: "square",
+        circleShape: "pie",
+        startAngle: 315,
+        readOnly: true,
+        tooltipFormat: "changeTooltip"
+    });
+
+    function changeTooltip(e) {
+        var val = e.value, speed;
+        if (val < 20) speed = "Slow";
+        else if (val < 40) speed = "Normal";
+        else if (val < 70) speed = "Speed";
+        else speed = "Very Speed";
+
+        return val + "<div>" + speed + "<div>";
+    }
+    </script>
+
     <script src="../asset/js/app.js"></script>
 </body>
+
 </html>
