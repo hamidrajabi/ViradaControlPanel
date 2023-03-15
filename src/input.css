@@ -10,7 +10,10 @@
       url("../asset/vazir-font/Vazir.ttf") format("ttf"),
       url("../asset/vazir-font/Vazir.eot") format("eot");
 }
-
+:root{
+    --range: #10b981;
+    --bg-range: #6ee7b7; 
+}
 *{
     font-family: 'vazir';
 }
@@ -29,3 +32,81 @@
     --tw-border-opacity: .2;
     transition: background,box-shadow var(--animation-input,.2s) ease-in-out;
 }
+
+
+#handle1 .rs-handle {
+    background-color: transparent;
+    border: 8px solid transparent;
+    border-right-color: black;
+    margin: -6px 0px 0px 14px !important;
+    border-width: 6px 104px 6px 4px;
+}
+
+#handle1 .rs-handle:before {
+    display: block;
+    content: " ";
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    background: black;
+    right: -11px;
+    bottom: -11px;
+    border-radius: 100px;
+}
+
+#handle1 .rs-tooltip {
+    top: 75%;
+    /* font-size: 14px; */
+}
+
+#handle1 .rs-tooltip div {
+    background: orange;
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;
+    padding: .2rem .5rem;
+    
+    overflow: hidden;
+    margin-top: 4px;
+}
+#handle1 .rs-tooltip div div {
+    display: none;
+}
+
+#handle1 .rs-range-color {
+    background-color: var(--range);
+}
+
+#handle1 .rs-path-color {
+    background-color: var(--bg-range);
+}
+
+
+.wave-container {  
+    height: 25px;
+    background-color: rgba(96, 165, 250, 0);
+    position: relative;
+  }
+  
+  .wave-container::before {   
+    content: "";
+    width: 500px;
+    height: 15px;
+    position: absolute;
+    bottom: -0.3%;
+    left: 0;
+    background-size: 80px;
+    background-repeat: repeat-x;
+    background-position: 16vw bottom;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200  134' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 98L50 92C100 86 200 74 300 50C400 26 500 -10 600 2C700 14 800 74 900 98C1000 122 1100 110 1150 104L1200 98V134H1150C1100 134 1000 134 900 134C800 134 700 134 600 134C500 134 400 134 300 134C200 134 100 134 50 134H0V98Z' fill='%2360a5fa'/></svg>");
+  }
+  
+  @media(max-width:850px) {
+    .wave-container::before {    
+      height: 7.5px
+    }  
+  }
