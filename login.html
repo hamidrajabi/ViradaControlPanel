@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به پنل کاربری</title>
+        <style>
+        @font-face {
+            font-family: 'vazir';
+            src: 
+                url("/static/fonts/vazir-font/Vazir.woff2") format("woff2"),
+                url("/static/fonts/vazir-font/Vazir.woff") format("woff"),
+                url("/static/fonts/vazir-font/Vazir.ttf") format("ttf"),
+                url("/static/fonts/vazir-font/Vazir.eot") format("eot");
+        }
+
+        *{
+            font-family: 'vazir';
+            font-size: 14px;
+        }
+
+        .width-180{
+            width: 180px;
+        }
+
+        .anime-smooth{
+            animation: fade-smooth .5s linear .4s 1 both;
+        }
+
+        @keyframes fade-smooth {
+            0%{opacity: 0%;}
+            100%{opacity: 100%;}
+        }
+        
+        .loading{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .d-none{
+            display: none;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <div class="loading" >
+        <img class="width-180 animate-pulse" src="/static/images/company-logo-edit.png" />
+    </div>
+    <main class="d-none container mx-auto min-h-screen flex-col items-center justify-center overflow-auto anime-smooth">
+        <img src="/static/images/company-logo-edit.png"  class="width-180" alt="company logo">
+        <form class="shadow-lg mb-4 rounded-lg flex flex-col justify-center items-center gap-4 py-4 px-6" method="POST">
+            <input type="hidden" name="csrfmiddlewaretoken" value="Qo5sTG9sz0yhh45oA9MGR8tGwEV5l0XrTMozwU9PzBLwRR1zqj0TRPOk3hqxK9Ez">
+            <img src="/static/images/smart-home-cuate.png" class="width-180" alt="smart home">
+            <div dir="rtl" class="flex flex-col gap-2">
+                <label class="text-gray-800 font-bold" for="username">نام کاربری</label>
+                <input class="bg-gray-100 w-[250px] rounded-lg h-[35px] border-0 outline-0 pr-2" type="text" name="username" id="username">
+            </div>
+            <div dir="rtl" class="flex flex-col gap-2">
+                <label class="text-gray-800 font-bold" for="password">رمز عبور</label>
+                <input class="bg-gray-100 w-[250px] rounded-lg h-[35px] border-0 outline-0 pr-2" type="password" name="password" id="password">
+            </div>
+            <button type="submit" class="w-[250px] rounded-lg h-[35px] bg-yellow-400" >ورود</button>
+        </form>
+    </main>
+
+    <footer class="flex justify-center text-slate-500 mb-2">
+        Copyright © 2023 All Rights reserved by:  <a href="https://viradaco.ir" class="text-sm underline ml-2" >Vira Danesh Asual Co.</a>
+    </footer>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer>
+        const loading = document.querySelector(".loading");
+        const main = document.querySelector("main")
+        window.addEventListener("load", () => {
+            loading.style.display = "none"
+            main.classList.remove("d-none")
+            main.classList.add("flex")
+        })
+    </script>
+</body>
+</html>
